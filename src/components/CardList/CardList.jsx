@@ -3,7 +3,8 @@ import Pagination from "../pagination/pagination";
 import Card from "../Card/Card";
 
 const getData = async (page,cat) => {
-  const res = await fetch(`http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}`, {
+  const baseUrl=process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${baseUrl}/api/posts?page=${page}&cat=${cat || ""}`, {
     cache: "no-store",
   });
 

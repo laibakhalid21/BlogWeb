@@ -2,10 +2,11 @@ import MenuPosts from "../menuPost/MenuPost";
 import Menucategories from "../menuCategories/MenuCatregoris";
 
 const Menu = async () => {
+    const baseUrl=process.env.NEXT_PUBLIC_API_URL;
   const [popularRes, catRes, editorRes] = await Promise.all([
-    fetch(`http://localhost:3000/api/menu/popular`, { cache: "no-store" }),
-    fetch(`http://localhost:3000/api/menu/categories`, { cache: "no-store" }),
-    fetch(`http://localhost:3000/api/menu/editors`, { cache: "no-store" }),
+    fetch(`${baseUrl}/api/menu/popular`, { cache: "no-store" }),
+    fetch(`${baseUrl}/api/menu/categories`, { cache: "no-store" }),
+    fetch(`${baseUrl}/api/menu/editors`, { cache: "no-store" }),
   ]);
 
   const [popularPosts, categories, editorPicks] = await Promise.all([

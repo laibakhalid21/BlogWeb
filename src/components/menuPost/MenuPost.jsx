@@ -23,11 +23,12 @@ const MenuPosts = ({ withImage = false, type = "popular" }) => {
 
   useEffect(() => {
     const fetchPosts = async () => {
+        const baseUrl=process.env.NEXT_PUBLIC_API_URL;
       try {
         const url =
           type === "editors"
-            ? "http://localhost:3000/api/menu/editors"
-            : "http://localhost:3000/api/menu/popular";
+            ? `${baseUrl}/api/menu/editors`
+            : `${baseUrl}/api/menu/popular`;
 
         const res = await fetch(url);
         const data = await res.json();

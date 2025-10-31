@@ -15,7 +15,8 @@ const getRandomColor = () => {
 };
 
 const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/categories", {
+    const baseUrl=process.env.NEXT_PUBLIC_API_URL;
+  const res = await fetch(`${baseUrl}/api/categories`, {
     cache: "no-store",
   });
 
