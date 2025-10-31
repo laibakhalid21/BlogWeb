@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ql-container{
+    font-size: 30px !important;
+}
+.quill > .ql-container > .ql-editor.ql-blank::before{
+    color: gray;
+}
