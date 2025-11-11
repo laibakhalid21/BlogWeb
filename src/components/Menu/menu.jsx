@@ -1,5 +1,7 @@
 import MenuPosts from "../menuPost/MenuPost";
 import Menucategories from "../menuCategories/MenuCatregoris";
+import { Suspense } from "react";
+import { LoadingSpinner } from "../loading/LoadingSpinner";
 
 const Menu = async () => {
     const baseUrl=process.env.NEXT_PUBLIC_API_URL;
@@ -25,7 +27,9 @@ const Menu = async () => {
         <h1 className="text-2xl sm:text-5xl font-semibold ">
           Most Popular
         </h1>
-        <MenuPosts withImage={true} posts={popularPosts} />
+        <Suspense fallback={<div className="mt-9 mb-14 flex items-center justify-center"><LoadingSpinner size="md" /></div>}>
+          <MenuPosts withImage={true} posts={popularPosts} />
+        </Suspense>
       </div>
 
       {/* Section 2 - Categories */}
@@ -36,18 +40,22 @@ const Menu = async () => {
         <h1 className="text-2xl sm:text-5xl font-semibold ">
           Categories
         </h1>
-        <Menucategories categories={categories} />
+        <Suspense fallback={<div className="mt-9 mb-14 flex items-center justify-center"><LoadingSpinner size="md" /></div>}>
+          <Menucategories categories={categories} />
+        </Suspense>
       </div>
 
-      {/* Section 3 - Editor’s Pick */}
+      {/* Section 3 - Editor's Pick */}
       <div>
         <h2 className="text-base sm:text-xl font-medium text-gray-400 ">
           Chosen by the editor
         </h2>
         <h1 className="text-2xl sm:text-5xl font-semibold ">
-          Editor’s Pick
+          Editor's Pick
         </h1>
-        <MenuPosts withImage={false} posts={editorPicks} />
+        <Suspense fallback={<div className="mt-9 mb-14 flex items-center justify-center"><LoadingSpinner size="md" /></div>}>
+          <MenuPosts withImage={false} posts={editorPicks} />
+        </Suspense>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 
-import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import { OptimizedImage } from "@/components/image/OptimizedImage";
 
 const getRandomColor = () => {
   const colors = [
@@ -53,12 +53,13 @@ const CategoryList = async () => {
               }}
             >
              {cat.img && <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
-                <Image
+                <OptimizedImage
                   src={cat.img || "/placeholder.png"}
                   alt={cat.title}
                   width={40}
                   height={40}
                   className="object-cover w-full h-full"
+                  loading="lazy"
                 />
               </div>}
               {cat.title}

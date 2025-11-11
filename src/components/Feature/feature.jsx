@@ -1,9 +1,8 @@
 "use client"
 
 import { ThemeContext } from "@/context/themecontext";
-import Image from "next/image";
 import { useContext } from "react";
-import { Suspense } from "react";
+import { OptimizedImage } from "@/components/image/OptimizedImage";
 
 
 const Featured = () => {
@@ -15,19 +14,18 @@ const Featured = () => {
                     <h1 className="lg:text-8xl sm:text-7xl text-6xl "><b className="font-bold">Hey, lama dev here!</b> Discover my stories and creative ideas.
                     </h1>
                     <div className="mt-14 lg:flex items-center gap-12">
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <div className="flex-1 h-[500px] relative">
-                                <Image
-                                    src='/p1 (1).jpeg'
-                                    alt="p1"
-                                    fill
-                                    className="object-cover"
-                                    placeholder="blur"
-                                    blurDataURL="/p1 (1).jpeg"
-
-                                />
-                            </div>
-                        </Suspense>
+                        <div className="flex-1 h-[500px] relative rounded-xl overflow-hidden">
+                            <OptimizedImage
+                                src='/p1 (1).jpeg'
+                                alt="Featured story"
+                                fill
+                                className="object-cover"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                                priority
+                                width={1000}
+                                height={500}
+                            />
+                        </div>
                         <div className="flex-1 flex flex-col gap-5">
                             <h1 className="text-4xl font-bold lg:pt-0  pt-5  ">
                                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quis, ab.

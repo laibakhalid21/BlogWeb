@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState, useContext } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ThemeContext } from "@/context/themecontext";
+import { OptimizedImage } from "@/components/image/OptimizedImage";
+import { LoadingSpinner } from "@/components/loading/LoadingSpinner";
 
 const MenuPosts = ({ withImage = false, type = "popular" }) => {
   const { mode } = useContext(ThemeContext);
@@ -47,9 +48,9 @@ const MenuPosts = ({ withImage = false, type = "popular" }) => {
 
   if (loading) {
     return (
-      <p className={`${mode === "dark" ? "text-gray-400" : "text-gray-600"}`}>
-        Loading {type === "editors" ? "editor’s picks..." : "popular posts..."}
-      </p>
+      <div className="flex items-center justify-center mt-9 mb-14">
+        <LoadingSpinner size="md" />
+      </div>
     );
   }
 
@@ -71,11 +72,15 @@ const MenuPosts = ({ withImage = false, type = "popular" }) => {
         >
           {withImage && post.img && (
             <div className="relative w-[80px] h-[80px] flex-shrink-0">
-              <Image
+              <OptimizedImage
                 src={post.img}
                 alt={post.title}
                 fill
                 className="rounded-full border-4 border-gray-400 object-cover"
+                sizes="80px"
+                loading="lazy"
+                width={80}
+                height={80}
               />
             </div>
           )}

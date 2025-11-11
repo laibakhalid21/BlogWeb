@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import AuthLinks from "../authLinks/authLinks";
 import ThemeToggle from "../themeToggle/themeToggle";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, Suspense } from "react";
 import { ThemeContext } from "@/context/themecontext";
 import { X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { blurDataURL } from "@/utils/imageUtils";
 
 const Navbar = () => {
   const { mode } = useContext(ThemeContext);
@@ -30,14 +31,18 @@ const Navbar = () => {
           {/* Left - Social Icons */}
           <div className="md:flex items-center flex-1 gap-2 hidden">
             {["facebook", "instagram", "tiktok", "youtube"].map((icon) => (
-              <Image
-                key={icon}
-                src={`/${icon}.png`}
-                alt={icon}
-                height={28}
-                width={28}
-                className="cursor-pointer hover:scale-110 transition-transform"
-              />
+              <Suspense key={icon} fallback={<div className="w-7 h-7 bg-gray-300 dark:bg-gray-600 rounded animate-pulse" />}>
+                <Image
+                  src={`/${icon}.png`}
+                  alt={icon}
+                  height={28}
+                  width={28}
+                  className="cursor-pointer hover:scale-110 transition-transform"
+                  placeholder="blur"
+                  blurDataURL={blurDataURL(28, 28)}
+                  loading="lazy"
+                />
+              </Suspense>
             ))}
           </div>
 
@@ -135,14 +140,18 @@ const Navbar = () => {
             <div className="flex flex-col items-center gap-6 p-6 border-t border-gray-300 dark:border-gray-700">
               <div className="flex items-center gap-5">
                 {["facebook", "instagram", "tiktok", "youtube"].map((icon) => (
-                  <Image
-                    key={icon}
-                    src={`/${icon}.png`}
-                    alt={icon}
-                    height={26}
-                    width={26}
-                    className="cursor-pointer hover:scale-110 transition-transform"
-                  />
+                  <Suspense key={icon} fallback={<div className="w-6 h-6 bg-gray-300 dark:bg-gray-600 rounded animate-pulse" />}>
+                    <Image
+                      src={`/${icon}.png`}
+                      alt={icon}
+                      height={26}
+                      width={26}
+                      className="cursor-pointer hover:scale-110 transition-transform"
+                      placeholder="blur"
+                      blurDataURL={blurDataURL(26, 26)}
+                      loading="lazy"
+                    />
+                  </Suspense>
                 ))}
               </div>
             </div>

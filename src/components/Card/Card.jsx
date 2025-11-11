@@ -1,8 +1,8 @@
 "use client";
 import React, { useContext } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ThemeContext } from "@/context/themecontext";
+import { OptimizedImage } from "@/components/image/OptimizedImage";
 
 const Card = ({key,item}) => {
   const { mode } = useContext(ThemeContext);
@@ -11,11 +11,15 @@ const Card = ({key,item}) => {
     <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 mb-12 transition-all" key={key}>
       {/* Image */}
      {item.img && <div className="relative w-full lg:w-1/2 h-64 sm:h-80 lg:h-[350px] rounded-xl overflow-hidden">
-        <Image
+        <OptimizedImage
           src={item.img}
-          alt="Culture article"
+          alt={item.title || "Article image"}
           fill
           className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          loading="lazy"
+          width={700}
+          height={350}
         />
       </div>}
 

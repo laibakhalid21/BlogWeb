@@ -1,8 +1,8 @@
 "use client";
 import { useContext } from "react";
 import { ThemeContext } from "@/context/themecontext";
-import Image from "next/image";
 import Link from "next/link";
+import { OptimizedImage } from "@/components/image/OptimizedImage";
 
 export default function AboutPage() {
   const { mode } = useContext(ThemeContext);
@@ -23,12 +23,15 @@ export default function AboutPage() {
         </div>
 
         <div className="relative w-full h-64 sm:h-96 rounded-2xl overflow-hidden shadow-lg">
-          <Image
+          <OptimizedImage
             src="/p.jpeg" 
             alt="About Banner"
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, 80vw"
             priority
+            width={800}
+            height={400}
           />
         </div>
 

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Pagination from "../pagination/pagination";
 import Card from "../Card/Card";
+import { Suspense } from "react";
+import { LoadingSpinner } from "../loading/LoadingSpinner";
 
 const getData = async (page,cat) => {
   const baseUrl=process.env.NEXT_PUBLIC_API_URL;
@@ -24,11 +26,17 @@ const CardList=async({page,cat})=>{
         <>
         <div className="flex-5">
             <h1 className="text-3xl font-semibold my-12">Recent Posts</h1>
-            <div>
-              {posts?.map((item)=>(
-                <Card item={item} key={item.id}/>
-              ))} 
-            </div>
+            <Suspense fallback={
+              <div className="min-h-[400px] flex items-center justify-center">
+                <LoadingSpinner size="xl" />
+              </div>
+            }>
+              <div>
+                {posts?.map((item)=>(
+                  <Card item={item} key={item.id}/>
+                ))} 
+              </div>
+            </Suspense>
             <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext}/>
         </div>
         

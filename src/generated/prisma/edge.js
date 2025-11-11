@@ -179,7 +179,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\web dep\\apna college\\Nextjs\\blogweb\\src\\generated\\prisma",
+      "value": "D:\\web dep\\Nextjs\\blogweb\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -193,7 +193,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\web dep\\apna college\\Nextjs\\blogweb\\prisma\\schema.prisma",
+    "sourceFilePath": "D:\\web dep\\Nextjs\\blogweb\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

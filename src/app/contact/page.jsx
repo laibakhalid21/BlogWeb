@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { OptimizedImage } from "@/components/image/OptimizedImage";
 
 export const metadata = {
   title: "Contact | BlogWeb",
@@ -14,11 +14,15 @@ const ContactPage = () => {
 
       <div className="flex flex-col md:flex-row items-center gap-16 w-full max-w-6xl">
         <div className="relative w-full md:w-1/2 h-[350px] sm:h-[450px] md:h-[500px]">
-          <Image
+          <OptimizedImage
             src="/contact.png"
             alt="Contact illustration"
             fill
             className="object-contain animate-move"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+            width={500}
+            height={500}
           />
         </div>
 

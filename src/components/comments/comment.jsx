@@ -1,10 +1,10 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { ThemeContext } from "@/context/themecontext";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
+import { OptimizedImage } from "@/components/image/OptimizedImage";
 
 
 const fetcher = async (url) => {
@@ -99,11 +99,15 @@ const Comment = ({ postSlug }) => {
               }`}
           >
             {item?.user?.image && <div className="shrink-0 relative w-[60px] h-[60px]">
-              <Image
+              <OptimizedImage
                 src={item.user.image}
                 alt="User Avatar"
                 fill
                 className="rounded-full object-cover border border-gray-400"
+                sizes="60px"
+                loading="lazy"
+                width={60}
+                height={60}
               />
             </div>
             }

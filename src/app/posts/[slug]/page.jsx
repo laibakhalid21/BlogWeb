@@ -1,7 +1,7 @@
 import BackButton from "@/components/backButton/backbutton";
 import Comment from "@/components/comments/comment";
 import Menu from "@/components/Menu/menu";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/image/OptimizedImage";
 
 
 
@@ -41,11 +41,15 @@ const SinglePost = async({params}) => {
 
             <div className="flex items-center justify-center lg:justify-start gap-4">
              {data?.user.image && <div className="relative w-12 h-12 sm:w-14 sm:h-14">
-                <Image
+                <OptimizedImage
                   src={data.user.image}
                   alt="Author"
                   fill
                   className="rounded-full object-cover"
+                  sizes="(max-width: 640px) 48px, 56px"
+                  priority
+                  width={56}
+                  height={56}
                 />
               </div>}
               <div className="flex flex-col text-sm sm:text-base">
@@ -56,11 +60,15 @@ const SinglePost = async({params}) => {
           </div>
 
         {data?.img && <div className="relative lg:flex-1 w-full h-72 sm:h-96 lg:h-[350px] rounded-xl overflow-hidden">
-          <Image
+          <OptimizedImage
             src={data.img}
-            alt="Post Image"
+            alt={data.title || "Post Image"}
             fill
             className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            priority
+            width={700}
+            height={350}
           />
         </div>}
         </div>

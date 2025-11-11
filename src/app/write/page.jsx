@@ -158,8 +158,16 @@ const handleFileUpload = async (file) => {
 
           {/* Preview uploaded media */}
           {media && (
-            <div className="my-4">
-              <img src={media} alt="Uploaded media" className="w-[600px] h-[400px] object-cover" />
+            <div className="my-4 relative w-full max-w-[600px] h-[400px] rounded-xl overflow-hidden">
+              <Image 
+                src={media} 
+                alt="Uploaded media" 
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 600px"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+              />
             </div>
           )}
 

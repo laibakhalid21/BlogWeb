@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Suspense } from "react";
+import { blurDataURL } from "@/utils/imageUtils";
 
 const Footer = () => {
     return (
@@ -9,7 +11,17 @@ const Footer = () => {
                     <footer className="mt-12 py-6 flex flex-col md:flex-row items-center justify-between gap-10 md:gap-0">
                         <div className="flex-1 flex flex-col gap-3 text-center md:text-left">
                             <div className="flex items-center justify-center md:justify-start gap-2">
-                                <Image src="/logo (1).png" alt="lama blog" width={50} height={50} />
+                                <Suspense fallback={<div className="w-[50px] h-[50px] bg-gray-300 dark:bg-gray-600 rounded animate-pulse" />}>
+                                  <Image 
+                                    src="/logo (1).png" 
+                                    alt="lama blog" 
+                                    width={50} 
+                                    height={50}
+                                    placeholder="blur"
+                                    blurDataURL={blurDataURL(50, 50)}
+                                    priority
+                                  />
+                                </Suspense>
                                 <h1 className="text-3xl font-semibold ">Lamablog</h1>
                             </div>
 
@@ -21,10 +33,19 @@ const Footer = () => {
                             </p>
 
                             <div className="flex justify-center md:justify-start gap-3 mt-2">
-                                <Image src="/facebook.png" alt="Facebook" width={18} height={18} />
-                                <Image src="/instagram.png" alt="Instagram" width={18} height={18} />
-                                <Image src="/tiktok.png" alt="Tiktok" width={18} height={18} />
-                                <Image src="/youtube.png" alt="YouTube" width={18} height={18} />
+                                {["facebook", "instagram", "tiktok", "youtube"].map((icon) => (
+                                  <Suspense key={icon} fallback={<div className="w-[18px] h-[18px] bg-gray-300 dark:bg-gray-600 rounded animate-pulse" />}>
+                                    <Image 
+                                      src={`/${icon}.png`} 
+                                      alt={icon.charAt(0).toUpperCase() + icon.slice(1)} 
+                                      width={18} 
+                                      height={18}
+                                      placeholder="blur"
+                                      blurDataURL={blurDataURL(18, 18)}
+                                      loading="lazy"
+                                    />
+                                  </Suspense>
+                                ))}
                             </div>
                         </div>
 

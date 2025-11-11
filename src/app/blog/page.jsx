@@ -1,6 +1,8 @@
 import CardList from "@/components/CardList/CardList"
 import Menu from "@/components/Menu/menu"
 import BackButton from "@/components/backButton/backbutton"
+import { Suspense } from "react"
+import { LoadingSpinner } from "@/components/loading/LoadingSpinner"
 
 const BlogPage = async ({ searchParams }) => {
     const SP = await searchParams
@@ -18,10 +20,14 @@ const BlogPage = async ({ searchParams }) => {
                     <h1 className=" text-center py-8 font-bold capitalize text-7xl">{cat} Blogs</h1>
                     <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
                         <div className="w-full lg:w-2/3">
-                            <CardList page={page} cat={cat} />
+                            <Suspense fallback={<div className="min-h-[400px] flex items-center justify-center"><LoadingSpinner size="xl" /></div>}>
+                                <CardList page={page} cat={cat} />
+                            </Suspense>
                         </div>
                         <div className="w-full lg:w-1/3">
-                            <Menu />
+                            <Suspense fallback={<div className="h-96 flex items-center justify-center"><LoadingSpinner size="lg" /></div>}>
+                                <Menu />
+                            </Suspense>
                         </div>
                     </div>
                 </div>
