@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Blog Platform
 
-## Getting Started
+A full-stack blog platform built with **Next.js**, **MongoDB**, **Prisma ORM**, and **NextAuth.js** — my first dive into full-stack web development!
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
+- **Read & Write Posts** — Browse all blog posts or create your own
+- **Comments** — Engage with the community by commenting on posts
+- **Authentication** — Secure user registration and login via NextAuth.js
+- **Categories** — Browse posts organized by topic
+- **User Profiles** — Personalized editor experience
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+Frontend | [Next.js](https://nextjs.org/) (React) 
+Backend | Next.js API Routes 
+Database | [MongoDB](https://www.mongodb.com/) 
+ORM | [Prisma](https://www.prisma.io/) 
+Auth | [NextAuth.js](https://next-auth.js.org/) 
+Deployment | [Vercel](https://vercel.com/) 
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Live Demo
+https://blog-web-92kf.vercel.app/
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## About
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This is my **first full-stack project**, built after transitioning from frontend-only development. It was an amazing learning experience covering:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Full-stack architecture with Next.js
+- Database design and management with Prisma + MongoDB
+- Secure authentication flows with NextAuth.js
+- Deploying full-stack apps to production
+
